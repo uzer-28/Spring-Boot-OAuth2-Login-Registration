@@ -32,6 +32,7 @@ public class HomeController {
 			if(principal instanceof OAuth2AuthenticationToken) {
 				OAuth2AuthenticationToken auth = (OAuth2AuthenticationToken) principal;
 				OAuth2User authUser = auth.getPrincipal();
+				authUser = authService.loadUser(authUser);
 				String name = authUser.getAttribute("name");
 				model.addAttribute("name", name);
 			}
